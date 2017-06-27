@@ -1,0 +1,53 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+    <record model="ir.ui.view" id="bms_project.list">
+      <field name="name">bms_project list</field>
+      <field name="model">bms_project.bms_project</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="value"/>
+          <field name="value2"/>
+        </tree>
+      </field>
+    </record>
+
+    <!-- actions opening views on models -->
+    <record model="ir.actions.act_window" id="bms_project.action_window">
+      <field name="name">bms_project window</field>
+      <field name="res_model">bms_project.bms_project</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- server action to the one above -->
+    <record model="ir.actions.server" id="bms_project.action_server">
+      <field name="name">bms_project server</field>
+      <field name="model_id" ref="model_bms_project_bms_project"/>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": self._name,
+        }
+      </field>
+    </record>
+
+    <!-- Top menu item -->
+    <menuitem name="bms_project" id="bms_project.menu_root"/>
+    <!-- menu categories -->
+    <menuitem name="Làm dấu mới &amp; cấp giấy" id="bms_project.menu_1" parent="bms_project.menu_root"/>
+    <menuitem name="Cài đặt" id="bms_project.menu_6" parent="bms_project.menu_root"/>
+
+     <!--actions menu-->
+    <menuitem name="Cơ sở pháp lý" id="bms_project.menu_1_list" parent="bms_project.menu_1"
+              action="bms_project.action_window"/>
+    <menuitem name="Tài liệu chuẩn" id="bms_project.menu_2_list" parent="bms_project.menu_1"
+              action="bms_project.action_window"/>
+    <menuitem name="Hồ sơ" id="bms_project.menu_3_list" parent="bms_project.menu_1"
+              action="bms_project.action_window"/>
+
+    <menuitem name="Server to list" id="bms_project.seting" parent="bms_project.menu_6"
+              action="bms_project.action_window"/>
+  </data>
+</odoo>
