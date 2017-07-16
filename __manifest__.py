@@ -1,35 +1,24 @@
-# -*- coding: utf-8 -*-
+# -*- encoding: utf-8 -*-
 {
-    'name': "bms_project",
-
+    'name': 'BMS CA',
+    'summary': 'The product of BMSGroup Global',
+    'version': '10.0.1.0',
+    'category': 'tools',
     'summary': """
-        Short (1 phrase/line) summary of the module's purpose, used as
-        subtitle on modules listing or apps.openerp.com""",
-
-    'description': """
-        Long description of module's purpose
-    """,
-
-    'author': "My Company",
-    'website': "http://www.yourcompany.com",
-
-    # Categories can be used to filter modules in modules listing
-    # Check https://github.com/odoo/odoo/blob/master/odoo/addons/base/module/module_data.xml
-    # for the full list
-    'category': 'Uncategorized',
-    'version': '0.1',
-
-    # any module necessary for this one to work correctly
-    'depends': ['base'],
-
-    # always loaded
+The new configurable Odoo Web Login Screen
+""",
+    'author': "BMSGroup Global",
+    'website': 'bmsgroupglobal.com',
+    'depends': [
+    ],
     'data': [
-        # 'security/ir.model.access.csv',
-        'views/views.xml',
-        'views/templates.xml',
+        'data/ir_config_parameter.xml',
+        'data/email_template.xml',
+        'templates/webclient_templates.xml',
+        'templates/website_templates.xml',
     ],
-    # only loaded in demonstration mode
-    'demo': [
-        'demo/demo.xml',
+    'qweb': [
     ],
+    'installable': True,
+    'application': True,
 }
